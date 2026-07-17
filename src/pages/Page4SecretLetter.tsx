@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 
 interface Page4SecretLetterProps {
@@ -6,8 +6,6 @@ interface Page4SecretLetterProps {
 }
 
 export const Page4SecretLetter: React.FC<Page4SecretLetterProps> = ({ isActive }) => {
-  const [animationComplete, setAnimationComplete] = useState(false);
-  
   if (!isActive) return null;
 
   const containerVariants: any = {
@@ -63,7 +61,6 @@ export const Page4SecretLetter: React.FC<Page4SecretLetterProps> = ({ isActive }
             variants={containerVariants}
             initial="hidden"
             animate="show"
-            onAnimationComplete={() => setAnimationComplete(true)}
             className="w-full flex flex-col font-handwriting text-[#3D3632] text-xl md:text-2xl leading-[2.2] tracking-wide origin-top"
           >
             
