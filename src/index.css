@@ -1,0 +1,208 @@
+@import "tailwindcss";
+
+@layer utilities {
+  .font-handwriting {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+  }
+  
+  .font-signature {
+    font-family: 'Marck Script', cursive;
+  }
+
+  .ambient-dust {
+    animation: dustFloat var(--duration) ease-in-out infinite var(--delay);
+    will-change: transform, opacity;
+  }
+  
+  .ambient-petal {
+    animation: petalFloat var(--duration) linear infinite var(--delay);
+    will-change: transform;
+  }
+
+  .falling-petal {
+    animation: petalFall var(--duration) linear infinite var(--delay);
+    will-change: transform;
+  }
+
+  .ambient-glow {
+    animation: pulseGlow 4s ease-in-out infinite;
+    will-change: opacity, transform;
+  }
+
+  .sunlight-ray {
+    animation: sweepRay var(--duration) ease-in-out infinite alternate var(--delay);
+    transform-origin: top left;
+    will-change: transform, opacity;
+  }
+}
+
+@keyframes dustFloat {
+  0%, 100% {
+    transform: translate(0, 0);
+    opacity: 0.1;
+  }
+  50% {
+    transform: translate(calc(var(--x-dir) * 1px), calc(var(--y-dir) * -1px));
+    opacity: 0.5;
+  }
+}
+
+@keyframes petalFloat {
+  0% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+  50% {
+    transform: translate(10vw, 15vh) rotate(180deg) scale(1.1);
+  }
+  100% {
+    transform: translate(-4vw, -5vh) rotate(360deg) scale(0.9);
+  }
+}
+
+@keyframes petalFall {
+  0% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.8;
+  }
+  90% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translate(calc(var(--drift) * 1vw), 120vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(0.9);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes sweepRay {
+  0% {
+    transform: rotate(-5deg) scale(1);
+    opacity: 0.3;
+  }
+  100% {
+    transform: rotate(5deg) scale(1.1);
+    opacity: 0.6;
+  }
+}
+
+@keyframes heartPulse {
+  0%, 100% {
+    opacity: 0.6;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-4px);
+  }
+}
+
+.heart-pulse {
+  animation: heartPulse 3.5s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+@keyframes slowBreathe {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.9;
+    transform: scale(1.05);
+  }
+}
+@keyframes slowBreatheAlt {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.light-breathe {
+  animation: slowBreathe 8s ease-in-out infinite;
+  will-change: opacity, transform;
+}
+.light-breathe-alt {
+  animation: slowBreatheAlt 10s ease-in-out infinite 2s;
+  will-change: opacity;
+}
+
+@keyframes floatUpAndFade {
+  0% {
+    transform: translateY(10px);
+    opacity: 0;
+  }
+  20% {
+    transform: translateY(-5px);
+    opacity: 1;
+  }
+  80% {
+    transform: translateY(-20px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-30px);
+    opacity: 0;
+  }
+}
+
+@keyframes cloudDrift {
+  0% { transform: translateX(-150%); }
+  100% { transform: translateX(100vw); }
+}
+
+.cloud-drift {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  animation: cloudDrift var(--duration) linear infinite var(--delay);
+  will-change: transform;
+}
+
+@keyframes grassWave {
+  0%, 100% { transform: scaleY(1) translateY(0) translateX(0); }
+  50% { transform: scaleY(var(--scale-y, 1.02)) translateY(2px) translateX(-1%); }
+}
+
+.grass-wave {
+  animation: grassWave var(--duration, 4s) ease-in-out infinite var(--delay, 0s);
+  will-change: transform;
+  transform-origin: bottom center;
+}
+
+@keyframes fireflyFloat {
+  0%, 100% { transform: translate(0, 0); opacity: var(--min-opacity, 0.2); }
+  50% { transform: translate(var(--x-shift, -20px), var(--y-shift, -20px)); opacity: 1; }
+}
+
+.firefly-float {
+  animation: fireflyFloat var(--duration, 4s) ease-in-out infinite var(--delay, 0s);
+  will-change: transform, opacity;
+}
+
+@keyframes organicSway {
+  0%, 100% { transform: rotate(0deg); }
+  50% { transform: rotate(var(--sway-amount, 3deg)); }
+}
+
+.organic-sway {
+  animation: organicSway var(--sway-duration, 5s) ease-in-out infinite var(--sway-delay, 0s);
+  will-change: transform;
+  transform-origin: bottom center;
+}
